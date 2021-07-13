@@ -4,12 +4,14 @@ using System.Drawing;
 
 namespace TelCo.ColorCoder
 { 
-	class MainProgram{
-	///printing the color manual for reference
-	ColorReferenceManual.printManual();
+	class MainProgram
+	{
+		/// Test code for the class
+        private static void Main(string[] args)
+		{
+			///printing the color manual for reference
+			ColorReferenceManual.printManual();
 
-	/// Test code for the class
-        private static void Main(string[] args){
 			int pairNumber = 4;
 
 			NumberPair testPair1 = ColorPair.GetColorFromPairNumber(pairNumber);
