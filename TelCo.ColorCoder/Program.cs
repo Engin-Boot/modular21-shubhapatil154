@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
-    
     /// The 25-pair color code, originally known as even-count color code, 
     /// is a color code used to identify individual conductors in twisted-pair 
     /// wiring for telecommunications.
@@ -24,37 +21,43 @@ namespace TelCo.ColorCoder
             colorMapMajor = new Color[] { Color.White, Color.Red, Color.Black, Color.Yellow, Color.Violet };
             colorMapMinor = new Color[] { Color.Blue, Color.Orange, Color.Green, Color.Brown, Color.SlateGray };
         }
-        /// Test code for the class
-        /// <param name="args"></param>
-        private static void Main(string[] args)
+	/// Given the two colors the function returns the pair number corresponding to them
+
+        /// <param name="pair">Color pair with major and minor color</param>
+        /// <returns> The Pair number corresponding to the given Color Pair </returns>
+        private static int GetPairNumberFromColor(ColorPair pair)
         {
-            int pairNumber = 4;
-            ColorPair testPair1 = Program.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.White);
-            Debug.Assert(testPair1.minorColor == Color.Brown);
+            // Find the major color in the array and get the index
+            int majorIndex = -1;
+            for (int i = 0; i < colorMapMajor.Length; i++)
+            {
+                if (colorMapMajor[i] == pair.majorColor)
+                {
+                    majorIndex = i;
+                    break;
+                }
+            }
 
-            pairNumber = 5;
-            testPair1 = Program.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.White);
-            Debug.Assert(testPair1.minorColor == Color.SlateGray);
+            // Find the minor color in the array and get the index
+            int minorIndex = -1;
+            for (int i = 0; i < colorMapMinor.Length; i++)
+            {
+                if (colorMapMinor[i] == pair.minorColor)
+                {
+                    minorIndex = i;
+                    break;
+                }
+            }
+            // If colors can not be found throw an exception
+            if (majorIndex == -1 || minorIndex == -1)
+            {
+                throw new ArgumentException(
+                    string.Format("Unknown Colors: {0}", pair.ToString()));
+            }
 
-            pairNumber = 23;
-            testPair1 = Program.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.Violet);
-            Debug.Assert(testPair1.minorColor == Color.Green);
-
-            ColorPair testPair2 = new ColorPair() { majorColor = Color.Yellow, minorColor = Color.Green };
-            pairNumber = Program.GetPairNumberFromColor(testPair2);
-            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", testPair2, pairNumber);
-            Debug.Assert(pairNumber == 18);
-
-            testPair2 = new ColorPair() { majorColor = Color.Red, minorColor = Color.Blue };
-            pairNumber = Program.GetPairNumberFromColor(testPair2);
-            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}", testPair2, pairNumber);
-            Debug.Assert(pairNumber == 6);
+            // Compute pair number and Return  
+            // (Note: +1 in compute is because pair number is 1 based, not zero)
+            return (majorIndex * colorMapMinor.Length) + (minorIndex + 1);
         }
     }
 }
