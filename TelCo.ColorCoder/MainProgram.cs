@@ -1,7 +1,10 @@
 using System;
+using System.Diagnostics;
+using System.Drawing;
+
 namespace TelCo.ColorCoder
 { 
-	class MainNumberPair{
+	class MainProgram{
 	///printing the color manual for reference
 	ColorReferenceManual.printManual();
 
@@ -9,7 +12,7 @@ namespace TelCo.ColorCoder
         private static void Main(string[] args){
 			int pairNumber = 4;
 
-			ColorPair testPair1 = ColorPair.GetColorFromPairNumber(pairNumber);
+			NumberPair testPair1 = ColorPair.GetColorFromPairNumber(pairNumber);
 			Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
 			Debug.Assert(testPair1.majorColor == Color.White);
 			Debug.Assert(testPair1.minorColor == Color.Brown);

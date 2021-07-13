@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
@@ -11,7 +13,7 @@ namespace TelCo.ColorCoder
         public static Color[] colorMapMinor;
 
 	/// Static constructor required to initialize static variable
-        static NumberPair()
+        static ColorPair()
             {
                 colorMapMajor = new Color[] { Color.White, Color.Red, Color.Black, Color.Yellow, Color.Violet };
                 colorMapMinor = new Color[] { Color.Blue, Color.Orange, Color.Green, Color.Brown, Color.SlateGray };
@@ -19,9 +21,7 @@ namespace TelCo.ColorCoder
 
         /// Given a pair number function returns the major and minor colors in that order
 
-        /* <param name="pairNumber">Pair number of the color to be fetched</param>
-            <returns> The Color Pair corresponding to the given Pair number </returns>*/
-        public static ColorPair GetColorFromPairNumber(int pairNumber)
+        public static NumberPair GetColorFromPairNumber(int pairNumber)
         {
             // The function supports only 1 based index. Pair numbers valid are from 1 to 25
             int minorSize = colorMapMinor.Length;
@@ -38,7 +38,9 @@ namespace TelCo.ColorCoder
             int minorIndex = zeroBasedPairNumber % minorSize;
 
             // Construct the return val from the arrays
-            ColorPair pair = new ColorPair() { majorColor = colorMapMajor[majorIndex],minorColor = colorMapMinor[minorIndex] };
+            NumberPair pair = new NumberPair(){ 
+                ajorColor = colorMapMajor[majorIndex],minorColor = colorMapMinor[minorIndex] 
+            };
             
             // return the value
             return pair;
