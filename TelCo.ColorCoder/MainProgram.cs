@@ -1,7 +1,7 @@
 using System;
 namespace TelCo.ColorCoder
 { 
-	class MainProgram{
+	class MainNumberPair{
 	///printing the color manual for reference
 	ColorReferenceManual.printManual();
 
@@ -26,13 +26,13 @@ namespace TelCo.ColorCoder
 			Debug.Assert(testPair1.majorColor == Color.Violet);
 			Debug.Assert(testPair1.minorColor == Color.Green);
 
-			Program testPair2 = new Program() { majorColor = Color.Yellow, minorColor = Color.Green };
-			pairNumber = Program.GetPairNumberFromColor(testPair2);
+			NumberPair testPair2 = new NumberPair() { majorColor = Color.Yellow, minorColor = Color.Green };
+			pairNumber = NumberPair.GetPairNumberFromColor(testPair2);
 			Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", testPair2, pairNumber);
 			Debug.Assert(pairNumber == 18);
 
-			testPair2 = new Program() { majorColor = Color.Red, minorColor = Color.Blue };
-			pairNumber = Program.GetPairNumberFromColor(testPair2);
+			testPair2 = new NumberPair() { majorColor = Color.Red, minorColor = Color.Blue };
+			pairNumber = NumberPair.GetPairNumberFromColor(testPair2);
 			Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}", testPair2, pairNumber);
 			Debug.Assert(pairNumber == 6);
 		}

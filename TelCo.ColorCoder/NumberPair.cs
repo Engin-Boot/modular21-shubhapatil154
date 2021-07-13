@@ -8,19 +8,15 @@ namespace TelCo.ColorCoder
     /// This class provides the color coding and 
     /// mapping of pair number to color and color to pair number.
     
-    class Program
+    class NumberPair
     {
-        /// Array of Major colors
-        private static Color[] colorMapMajor;
-        /// Array of minor colors
-        private static Color[] colorMapMinor;
+        internal Color majorColor;
+        internal Color minorColor;
+        public override string ToString()
+        {
+        	return string.Format("MajorColor:{0}, MinorColor:{1}", majorColor.Name, minorColor.Name);
+        }        
 
-	/// Static constructor required to initialize static variable
-        static Program()
-            {
-                colorMapMajor = new Color[] { Color.White, Color.Red, Color.Black, Color.Yellow, Color.Violet };
-                colorMapMinor = new Color[] { Color.Blue, Color.Orange, Color.Green, Color.Brown, Color.SlateGray };
-            }
 	/// Given the two colors the function returns the pair number corresponding to them
 
         /// <param name="pair">Color pair with major and minor color</param>
