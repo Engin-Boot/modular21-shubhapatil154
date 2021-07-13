@@ -39,7 +39,7 @@ namespace TelCo.ColorCoder
 
             // Construct the return val from the arrays
             NumberPair pair = new NumberPair(){ 
-                ajorColor = colorMapMajor[majorIndex],minorColor = colorMapMinor[minorIndex] 
+                majorColor = colorMapMajor[majorIndex],minorColor = colorMapMinor[minorIndex] 
             };
             
             // return the value
