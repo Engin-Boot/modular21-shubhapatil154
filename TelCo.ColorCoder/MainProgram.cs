@@ -1,7 +1,7 @@
 using System;
 namespace TelCo.ColorCoder
 { 
-	class MainNumberPair{
+	class MainProgram{
 	///printing the color manual for reference
 	ColorReferenceManual.printManual();
 
