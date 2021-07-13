@@ -11,6 +11,6 @@ namespace TelCo.ColorCoder
 				Console.WriteLine("Colors: major{0} - minor{1}\n", Program.colorMapMajor[num1], Program.colorMapMinor[num2]);
 			}
 		}
-	}
+	
     }
 }
