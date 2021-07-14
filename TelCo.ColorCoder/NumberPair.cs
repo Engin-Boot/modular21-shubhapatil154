@@ -4,8 +4,7 @@ using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
-   
-    class NumberPair
+    class NumberPairGenerator
     {
         public Color majorColor;
         public Color minorColor;
@@ -15,15 +14,15 @@ namespace TelCo.ColorCoder
         	return string.Format("MajorColor:{0}, MinorColor:{1}", majorColor.Name, minorColor.Name);
         }        
 
-	/// Given the two colors the function returns the pair number corresponding to them
+		/// Given the two colors the function returns the pair number corresponding to them
 
-        public static int GetPairNumberFromColor(NumberPair pair)
+        public static int GetPairNumberFromColor(NumberPairGenerator pair)
         {
             // Find the major color in the array and get the index
             int majorIndex = -1;
-            for (int i = 0; i < ColorPair.colorMapMajor.Length; i++)
+            for (int i = 0; i < ColorPairGenerator.colorMapMajor.Length; i++)
             {
-                if (ColorPair.colorMapMajor[i] == pair.majorColor)
+                if (ColorPairGenerator.colorMapMajor[i] == pair.majorColor)
                 {
                     majorIndex = i;
                     break;
@@ -31,9 +30,9 @@ namespace TelCo.ColorCoder
             }
             // Find the minor color in the array and get the index
             int minorIndex = -1;
-            for (int i = 0; i < ColorPair.colorMapMinor.Length; i++)
+            for (int i = 0; i < ColorPairGenerator.colorMapMinor.Length; i++)
             {
-                if (ColorPair.colorMapMinor[i] == pair.minorColor)
+                if (ColorPairGenerator.colorMapMinor[i] == pair.minorColor)
                 {
                     minorIndex = i;
                     break;
@@ -45,7 +44,7 @@ namespace TelCo.ColorCoder
                 throw new ArgumentException(
                     string.Format("Unknown Colors: {0}", pair.ToString()));
             }
-            return (majorIndex * ColorPair.colorMapMinor.Length) + (minorIndex + 1);
+            return (majorIndex * ColorPairGenerator.colorMapMinor.Length) + (minorIndex + 1);
         }
     }
 }
