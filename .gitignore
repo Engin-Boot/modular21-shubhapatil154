@@ -28,3 +28,4 @@ bld/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+TelCo.ColorCoder/.vscode/tasks.json
